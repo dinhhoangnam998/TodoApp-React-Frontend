@@ -1,0 +1,13 @@
+const FILTER_STATE = {
+  ALL: "all",
+  COMPLETE: "complete",
+  INCOMPLETE: "imcomplete",
+}
+
+
+const TODO_STATE = {
+  COMPLETE: FILTER_STATE.COMPLETE,
+  INCOMPLETE: FILTER_STATE.INCOMPLETE,
+}
+
+export { FILTER_STATE, TODO_STATE }

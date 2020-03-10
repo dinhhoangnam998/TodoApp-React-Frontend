@@ -1,19 +1,11 @@
 import React from 'react'
 import TodoItem from './TodoItem';
 
-export default function TodoList() {
+export default function TodoList({ todos }) {
   return (
     <section className="mt-1">
       <ul className="list-group">
-        <li className="list-group-item">
-          <TodoItem></TodoItem>
-        </li>
-        <li className="list-group-item">
-          <TodoItem></TodoItem>
-        </li>
-        <li className="list-group-item">
-          <TodoItem></TodoItem>
-        </li>
+        {todos.map(todo => <li key={todo.id} className="list-group-item"><TodoItem todo={todo}></TodoItem> </li>)}
       </ul>
     </section>
   )
