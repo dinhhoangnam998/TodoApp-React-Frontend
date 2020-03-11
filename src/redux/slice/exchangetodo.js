@@ -19,13 +19,13 @@ const fetchingTodo = () => dispatch => {
   )
 }
 
-const posttingTodo = () => (dispatch, state) => {
+const posttingTodo = () => (dispatch, getState) => {
   dispatch(startPosting());
   return (
     fetch('http://localhost:3001/save-todos', {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(state.todoS.todos)
+      body: JSON.stringify(getState().todoS.todos)
     }).then(res => res.json())
       .then((result) => { dispatch(endPosting({ result: result })) })
   )

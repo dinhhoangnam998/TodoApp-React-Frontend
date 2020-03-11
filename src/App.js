@@ -10,12 +10,19 @@ function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchingTodo())
+    // eslint-disable-next-line
   }, [])
   return (
-    <div className="container">
-      <Header></Header>
-      <Main></Main>
-      <Footer></Footer>
+    <div className="container mt-5">
+      <div className="row">
+        <div className="col-md-3"></div>
+        <div className="col-md-6">
+          <Header></Header>
+          <Main></Main>
+          <Footer></Footer>
+        </div>
+        <div className="col-md-3"></div>
+      </div>
     </div>
   );
 }
