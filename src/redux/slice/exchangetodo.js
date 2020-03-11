@@ -1,5 +1,6 @@
 import { createAction, createReducer } from "@reduxjs/toolkit"
 import { preloadTodosA } from "./todos"
+import { SERVER_URI } from "../../setting"
 
 const startFetching = createAction('start_fetching');
 const endFetching = createAction('end_fetching');
@@ -10,11 +11,13 @@ const endPosting = createAction('end_posting');
 const fetchingTodo = () => dispatch => {
   dispatch(startFetching());
   return (
-    fetch('http://localhost:3001/fetch-todos')
+    fetch(`${SERVER_URI}/fetch-todos`)
       .then(res => res.json())
       .then(todos => {
-        dispatch(endFetching());
-        dispatch(preloadTodosA({ todos: todos }))
+        setTimeout(() => {
+          dispatch(endFetching());
+          dispatch(preloadTodosA({ todos: todos }))
+        }, 500)
       })
   )
 }
@@ -22,12 +25,12 @@ const fetchingTodo = () => dispatch => {
 const posttingTodo = () => (dispatch, getState) => {
   dispatch(startPosting());
   return (
-    fetch('http://localhost:3001/save-todos', {
+    fetch(`${SERVER_URI}/save-todos`, {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(getState().todoS.todos)
     }).then(res => res.json())
-      .then((result) => { dispatch(endPosting({ result: result })) })
+      .then((result) => { setTimeout(() => { dispatch(endPosting({ result: result })) }, 1000) })
   )
 }
 

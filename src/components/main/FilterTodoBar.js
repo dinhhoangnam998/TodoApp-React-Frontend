@@ -22,7 +22,7 @@ export default function FilterTodoBar({ numOfItem }) {
           <div className="col-3">
 
             <button className="btn btn-sm btn-outline-primary float-right" onClick={(e) => dispatch(posttingTodo())}>
-              {isSaving ? (<> <span>Saving </span><span className="spinner-border spinner-border-sm"></span></>) : 'Save'}
+              {isSaving ? (<> <span>Saving... </span><span className="spinner-border spinner-border-sm"></span></>) : 'Save'}
             </button>
           </div>
         </div>
